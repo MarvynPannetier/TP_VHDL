@@ -64,7 +64,8 @@ begin
             ELSE
                 CASE state IS
                     WHEN INIT =>
-                        IF B_CENTER = '1' THEN state <= PLAY_FWD;
+                        IF B_CENTER = '1' THEN 
+                        state <= PLAY_FWD;
                         ELSE state <= INIT;
                         END IF;
                     WHEN PLAY_FWD =>

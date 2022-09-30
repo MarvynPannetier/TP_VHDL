@@ -33,22 +33,32 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity detect_impulsion is
     Port ( clock : in STD_LOGIC;
-           input : in STD_LOGIC;
-           output : out STD_LOGIC);
+         input : in STD_LOGIC;
+         output : out STD_LOGIC);
 end detect_impulsion;
 
 architecture Behavioral of detect_impulsion is
 
+
+
 begin
 
     process(clock)
+
+        variable copy : std_logic := '0';
+
     begin
         if clock'event and clock = '1' then
-            if input = '1' then
+            if input = '1' and copy = '0' then
                 output <= '1';
+                copy := '1';
             else
                 output <= '0';
+                if input ='0' then
+                    copy := '0';
+                end if;
             end if;
         end if;
     end process;
+
 end Behavioral;

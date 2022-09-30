@@ -94,9 +94,9 @@ begin
         elsif PLAY_PAUSE = '0' then
 
             sortie1 <= "1111110";
-            sortie2 <= "1111110";
-            sortie3 <= "1111110";
-            sortie4 <= "1111110";
+            sortie2 <= "1111100";
+            sortie3 <= "1111000";
+            sortie4 <= "1110000";
 
         end if;
     end process;
@@ -146,6 +146,8 @@ begin
 
        -- MUS <= to_integer(unsigned(NB_MUS));
      lim := to_integer(unsigned(NB_MUS)) ;
+     cent := 0;
+     diz := 0;
 
         for i in 0 to 9 loop
 
@@ -155,6 +157,8 @@ begin
             end if;
 
         end loop;
+        
+       
 
         CASE cent is
 
@@ -181,6 +185,7 @@ begin
         end case;
 
         lim := to_integer(unsigned(NB_MUS)) - (cent*100) ;
+        
 
         for i in 0 to 9 loop
 
@@ -250,5 +255,7 @@ begin
     s_cent <= cent_s;
     s_dizaine <= diz_s;
     s_unit <= unit_s;
+
+--tout inversé dans vecteur!!
 
 end Behavioral;
